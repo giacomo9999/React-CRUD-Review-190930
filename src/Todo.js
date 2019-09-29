@@ -24,22 +24,30 @@ class Todo extends Component {
           <input type="text" name="item" className="item" />
           <button className="btn-add-item">Add</button>
         </form>
-        <ul>
-          {this.state.mockData.map(item => (
-            <li key={item.id}>
-              {item.title}
-              <button onClick={this.onDeleteHandle.bind(this, item.id)}>
-                Delete
-              </button>
-              <button
-                onClick={this.onEditHandle.bind(this, item.id, item.title)}
-              >
-                Edit
-              </button>
-              <button onClick={this.onCompleteHandle}>Complete</button>
-            </li>
-          ))}
-        </ul>
+        <table>
+          <tbody>
+            {this.state.listItems.map(item => (
+              <tr key={item.id}>
+                <td>{item.title}</td>
+                <td>
+                  <button onClick={this.onDeleteHandle.bind(this, item.id)}>
+                    Delete
+                  </button>
+                </td>
+                <td>
+                  <button
+                    onClick={this.onEditHandle.bind(this, item.id, item.title)}
+                  >
+                    Edit
+                  </button>
+                </td>
+                <td>
+                  <button onClick={this.onCompleteHandle}>Complete</button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </div>
     );
   }
